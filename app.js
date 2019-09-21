@@ -1,5 +1,7 @@
 let express = require("express");
 let app = express(); //Creates the Express Application
+// Path Library to handle any OS directory
+let path = require("path");
 
 // Handling GET requests with Express
 
@@ -8,9 +10,9 @@ app.get("/", (req, res) => {
   res.send("Hello, this is express!");
 });
 
-// /about URL
+// /about URL - w/ Path
 app.get("/about", (req, res) => {
-  res.sendFile("/public/pages/about.html", { root: __dirname });
+  res.sendFile(path.join(__dirname, "/public/pages/about.html"));
 });
 
 // Assign environment port or 8080
